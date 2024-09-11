@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card p-4">
+    <form #stockTransferForm="ngForm" (ngSubmit)="onStockTransfer(stockTransferForm)" novalidate>
+      <div class="row">
+
+        <!-- Product Name Field -->
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Product Name</mat-label>
+          <mat-select [(ngModel)]="transferDetails.productName" name="productName" required #productName="ngModel">
+            <mat-option value="Recharge Coupons">Recharge Coupons</mat-option>
+            <mat-option value="E-top amounts">E-top amounts</mat-option>
+            <mat-option value="Sim cards">Sim cards</mat-option>
+          </mat-select>
+          <div *ngIf="productName.invalid && productName.touched" class="text-danger">
+            Product name is required
+          </div>
+        </mat-form-field>
+
+        <!-- Source Distributor Field -->
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Source Distributor</mat-label>
+          <input matInput placeholder="Source Distributor" [(ngModel)]="transferDetails.sourceDistributor"
+            name="sourceDistributor" required minlength="3" #sourceDistributor="ngModel">
+          <div *ngIf="sourceDistributor.invalid && sourceDistributor.touched" class="text-danger">
+            Source Distributor is required (at least 3 characters).
+          </div>
+        </mat-form-field>
+
+        <!-- Target Distributor Field -->
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Target Distributor</mat-label>
+          <input matInput placeholder="Target Distributor" [(ngModel)]="transferDetails.targetDistributor"
+            name="targetDistributor" required minlength="3" #targetDistributor="ngModel">
+          <div *ngIf="targetDistributor.invalid && targetDistributor.touched" class="text-danger">
+            Target Distributor is required (at least 3 characters).
+          </div>
+        </mat-form-field>
+
+        <!-- Quantity Field -->
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" placeholder="Quantity" [(ngModel)]="transferDetails.quantity"
+            name="quantity" required min="1" #quantity="ngModel">
+          <div *ngIf="quantity.invalid && quantity.touched" class="text-danger">
+            Enter a valid quantity (greater than 0).
+          </div>
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <div align="end">
+          <button mat-stroked-button color="primary" type="submit" [disabled]="stockTransferForm.invalid">
+            Transfer Stock
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

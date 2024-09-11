@@ -1,0 +1,80 @@
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+        <form #registerForm2="ngForm" (ngSubmit)="registerD(registerForm2)" novalidate>
+            
+            <!-- Username Field with Validation -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Username</mat-label>
+                <input matInput 
+                    ngModel
+                    name="userName"
+                    id="userName"
+                    placeholder="Username"
+                    required minlength="3" #userName="ngModel">
+                <div *ngIf="userName.invalid && userName.touched" class="text-danger">
+                    Username is required (at least 3 characters).
+                </div>
+            </mat-form-field>
+
+            <!-- Password Field with Validation -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput 
+                    ngModel
+                    name="userPassword"
+                    id="userPassword"
+                    placeholder="Password"
+                    type="password"
+                    required minlength="6" #userPassword="ngModel">
+                <div *ngIf="userPassword.invalid && userPassword.touched" class="text-danger">
+                    Password is required (at least 6 characters).
+                </div>
+            </mat-form-field>
+
+            <!-- First Name Field with Validation -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>First Name</mat-label>
+                <input matInput 
+                    ngModel
+                    name="userFirstName"
+                    id="userFirstName"
+                    placeholder="First Name"
+                    required minlength="2" #userFirstName="ngModel">
+                <div *ngIf="userFirstName.invalid && userFirstName.touched" class="text-danger">
+                    First name is required (at least 2 characters).
+                </div>
+            </mat-form-field>
+
+            <!-- Last Name Field with Validation -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Last Name</mat-label>
+                <input matInput 
+                    ngModel
+                    name="userLastName"
+                    id="userLastName"
+                    placeholder="Last Name"
+                    required minlength="2" #userLastName="ngModel">
+                <div *ngIf="userLastName.invalid && userLastName.touched" class="text-danger">
+                    Last name is required (at least 2 characters).
+                </div>
+            </mat-form-field>
+
+            <!-- Email Field with Validation -->
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput 
+                    ngModel
+                    name="email"
+                    id="email"
+                    placeholder="Email-Id"
+                    required email #email="ngModel">
+                <div *ngIf="email.invalid && email.touched" class="text-danger">
+                    Please enter a valid email address.
+                </div>
+            </mat-form-field>
+
+            <!-- Register Button -->
+            <button type="submit" mat-raised-button color="primary" [disabled]="registerForm2.invalid">Register as Retailer</button>
+        </form>
+    </div>
+</div>
